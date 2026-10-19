@@ -19,6 +19,6 @@ export function SiteFooter(){return <footer>
  <div className="brand"><img className="brand-logo" src="/arkansas-camper-rentals-logo.jpg" alt=""/><span>Arkansas <b>Camper Rentals</b></span></div>
  <p>Jonesboro, Arkansas</p><a href="mailto:arcamperrentals@gmail.com">arcamperrentals@gmail.com</a>
  <a className="campfire-credit" href="https://clemonswebco.com" target="_blank" rel="noreferrer" aria-label="Crafted around the digital campfire by Clemons Web Co."><span className="campfire-mark" aria-hidden="true"><Flame/></span><span className="campfire-copy"><small>Crafted around the digital campfire by</small><strong>Clemons Web Co.</strong></span><ChevronRight className="campfire-arrow" aria-hidden="true"/></a>
- <a href="/owner" style={{fontSize:12,opacity:.65}}>Owner login</a>
+ <a href="/owner" style={{fontSize:12,opacity:.65}}>Site management</a>
  </footer>}
 
