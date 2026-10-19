@@ -1,0 +1,11 @@
+.owner{max-width:1100px;margin:60px auto;padding:24px}.owner h1{font-size:clamp(2rem,5vw,3.5rem)}.owner form,.owner-note{background:#f5f2e9;padding:24px;border-radius:18px;margin:24px 0}.owner label{display:block;font-weight:600;margin:14px 0}.owner input,.owner textarea,.owner select{display:block;width:100%;padding:12px;background:white;border:1px solid #9baca0;border-radius:8px;margin-top:7px;color:#183d30}.owner textarea{min-height:100px}.owner button{background:#234e3b;color:white;padding:11px 18px;border-radius:8px;cursor:pointer}.owner button:disabled{opacity:.5;cursor:wait}.owner-toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}.owner-fields{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.owner-items article{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid #ccc}.owner-photos{display:flex;gap:16px;flex-wrap:wrap}.owner-photos>div{width:180px}.owner-photos img{width:180px;height:130px;object-fit:cover;border-radius:8px}.owner-photos button{margin:5px 0}.owner .owner-check{display:flex;gap:12px;align-items:center}.owner .owner-check input{width:20px;margin:0}.owner-card{max-width:380px;pointer-events:none}.owner-note{border:1px solid #b7bda8}@media(max-width:600px){.owner-fields{grid-template-columns:1fr}.owner{margin:20px auto;padding:16px}}
+
+.owner-editor{scroll-margin-top:100px}
+
+.owner-mobile-save{display:none}
+@media(max-width:768px){
+ .owner-editor{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important}
+ .owner-mobile-save{position:fixed;bottom:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:#f5f2e9;border-top:1px solid #b7bda8;box-shadow:0 -4px 18px #183d3020}
+ .owner-mobile-save>div{min-width:0;flex:1}.owner-mobile-save small{display:block;font-size:12px;color:#526957}.owner-mobile-save strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#183d30}
+ .owner-mobile-save button{flex-shrink:0;min-height:48px;font-weight:700}
+}
