@@ -4,8 +4,8 @@ import {useState} from "react";
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle} from "@/components/ui/dialog";
 import HomeClient from "@/components/home-client";
 
-export type Rental={name:string;type:string;badge:string;rate:string;status?:string;sleeps?:string;summary:string;features:string[];photos:string[]};
-export type Addon={name:string;category:string;rate:string;summary:string;details:string[];photos:string[]};
+export type Rental={name:string;type:string;badge:string;rate:string;status?:string;sleeps?:string;summary:string;features:string[];photos:string[];youtubeUrl?:string;videoTitle?:string};
+export type Addon={name:string;category:string;rate:string;summary:string;details:string[];photos:string[];youtubeUrl?:string;videoTitle?:string};
 type Review={name:string;initials:string;text:string};
 const img=(name:string)=>`/inventory/${name}.webp`;
 const addonImg=(name:string)=>`/addons/${name}.webp`;

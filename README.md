@@ -19,3 +19,9 @@ Supabase schema and access setup are documented in `supabase/SETUP.md`. Only pub
 ## Share offer
 
 The homepage voucher advertises $20 off eligible camper or trailer rentals after sharing the production website URL and emailing a screenshot with an inquiry. Items priced $20 or less are excluded. Michael confirms eligibility; the site does not automatically apply a payment discount.
+
+## YouTube setup videos
+
+In Site management, edit a listing and fill in the optional YouTube video link and title. Public or unlisted videos must allow embedding. Standard watch, Share/youtu.be, Shorts, live-video, and embed links are supported. Clear the link and save to remove the entire panel. Videos load only when requested, with autoplay disabled; closing the panel or popup unloads the player. Only the link and title are stored in inventory JSON, so no database migration or video file storage is needed.
+
+Run video URL checks with `node --experimental-strip-types --test tests/youtube.test.mjs`.

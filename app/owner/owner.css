@@ -9,3 +9,5 @@
  .owner-mobile-save>div{min-width:0;flex:1}.owner-mobile-save small{display:block;font-size:12px;color:#526957}.owner-mobile-save strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;color:#183d30}
  .owner-mobile-save button{flex-shrink:0;min-height:48px;font-weight:700}
 }
+
+.owner-video-fields{min-width:0;margin:24px 0;padding:18px;border:1px solid #b7bda8;border-radius:14px}.owner-video-fields legend{padding:0 7px;font-weight:700;color:#183d30}.owner-video-fields legend span{font-weight:400}.owner-video-fields>p{font-size:.85rem;line-height:1.6}.owner-video-fields .listing-video{padding:18px;border:1px solid #dce2d8;border-radius:12px}.owner-video-fields [role=alert]{color:#934321}
