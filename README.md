@@ -25,3 +25,9 @@ The homepage voucher advertises $20 off eligible camper or trailer rentals after
 In Site management, edit a listing and fill in the optional YouTube video link and title. Public or unlisted videos must allow embedding. Standard watch, Share/youtu.be, Shorts, live-video, and embed links are supported. Clear the link and save to remove the entire panel. Videos load only when requested, with autoplay disabled; closing the panel or popup unloads the player. Only the link and title are stored in inventory JSON, so no database migration or video file storage is needed.
 
 Run video URL checks with `node --experimental-strip-types --test tests/youtube.test.mjs`.
+
+## Campfire Memories
+
+`/memories` is a renter photo board linked from the main navigation and homepage. Photos are resized in the browser, submitted with permission, and held privately until approved in Site management → Campfire Memories. Owners can approve, hide, reject, or permanently delete submissions. The existing Supabase owner check protects moderation; inventory storage is unchanged.
+
+Board metadata uses the Sites D1 `DB` binding and photos use the private R2 `BUCKET` binding. Apply committed Drizzle migrations when configuring another environment. Public image routes check approval on every request. Uploads allow JPEG/PNG/WebP up to 2 MB, five submissions per IP per day, and a maximum of 500 pending submissions. No renter email address is collected. Never seed production with fictional customer memories.

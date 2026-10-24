@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {validateMemory,memoryImageType,validMemoryId,MAX_MEMORY_BYTES} from '../lib/memories-validation.ts';
+const valid={nickname:' Ava ',caption:' Sunrise by the lake. ',story:'Our first camper trip.',gear:'Sunray 109',consent:'yes'};
+test('accepts and trims a permitted submission',()=>{assert.deepEqual(validateMemory(valid),{nickname:'Ava',caption:'Sunrise by the lake.',story:valid.story,gear:valid.gear})});
+test('requires explicit permission and bounds visitor text',()=>{for(const patch of [{consent:''},{nickname:''},{nickname:'x'.repeat(51)},{caption:'x'.repeat(91)},{story:'x'.repeat(1001)},{gear:'x'.repeat(101)}])assert.throws(()=>validateMemory({...valid,...patch}));assert.equal(validateMemory({...valid,story:'',gear:''}).story,'')});
+test('recognizes supported photo bytes instead of trusting a filename',()=>{assert.equal(memoryImageType(new Uint8Array([255,216,255,224])),'image/jpeg');assert.equal(memoryImageType(new Uint8Array([137,80,78,71,13,10,26,10])),'image/png');assert.equal(memoryImageType(new TextEncoder().encode('RIFF1234WEBP')),'image/webp');for(const value of ['<svg onload="alert(1)">','<html>not a photo</html>',''])assert.equal(memoryImageType(new TextEncoder().encode(value)),null);assert.equal(MAX_MEMORY_BYTES,2097152)});
+test('blocks untrusted image and record path identifiers',()=>{assert(validMemoryId('b060caac-e6ba-4026-b7da-8196697bd8b9'));for(const id of ['../secret','not-an-id','b060caac-e6ba-1026-b7da-8196697bd8b9'])assert(!validMemoryId(id))});
