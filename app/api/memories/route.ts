@@ -3,13 +3,14 @@ import {validateMemory,memoryImageType,MAX_MEMORY_BYTES,validMemoryId} from '@/l
 export const dynamic='force-dynamic';
 export async function GET(request:Request){
  try{const {db}=memoryStorage();const query=new URL(request.url).searchParams;const admin=query.get('manage')==='1';if(admin&&!await memoryOwner(request))return boardJson({error:'Please sign in again with an approved owner account.'},401);
+ const pageSize=admin?24:4;
  const offset=Math.max(0,Math.min(100000,Math.floor(Number(query.get('offset'))||0)));
  const filter=admin&&['pending','approved','rejected'].includes(query.get('status')||'')?query.get('status'):null;
- const sql=`SELECT id,nickname,caption,story,gear,status,created_at FROM camp_memories ${admin?(filter?'WHERE status = ?':''):"WHERE status = 'approved'"} ORDER BY created_at DESC,id DESC LIMIT 25 OFFSET ?`;
+ const sql=`SELECT id,nickname,caption,story,gear,status,created_at FROM camp_memories ${admin?(filter?'WHERE status = ?':''):"WHERE status = 'approved'"} ORDER BY created_at DESC,id DESC LIMIT ${pageSize+1} OFFSET ?`;
  const statement=db.prepare(sql);const result=await (filter?statement.bind(filter,offset):statement.bind(offset)).all();
  let counts:Record<string,number>|undefined;
  if(admin){const grouped=await db.prepare('SELECT status,COUNT(*) AS count FROM camp_memories GROUP BY status').all<{status:string;count:number}>();counts=Object.fromEntries(grouped.results.map(row=>[row.status,row.count]))}
- return boardJson({posts:result.results.slice(0,24),next:result.results.length>24?offset+24:null,...(counts?{counts}:{})});
+ return boardJson({posts:result.results.slice(0,pageSize),next:result.results.length>pageSize?offset+pageSize:null,...(counts?{counts}:{})});
  }catch{return boardJson({error:'The memory board is temporarily unavailable. Please try again soon.'},503)}
 }
 export async function POST(request:Request){
