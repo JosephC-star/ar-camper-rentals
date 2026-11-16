@@ -3,8 +3,8 @@ import {useEffect,useState} from 'react';
 import type {Rental,Addon} from '@/app/page';
 export const groups=['Campers','Equipment','Generators','Add-ons','Merchandise','Miscellaneous'] as const;
 export type Item={id:string;section:string;category:string;available:boolean;published:boolean;position:number;data:Rental & {category?:string;details?:string[]}};
-export const url=process.env.NEXT_PUBLIC_INVENTORY_SUPABASE_URL||'https://gscaqzhdxqwqgynwtpom.supabase.co';
-export const key=process.env.NEXT_PUBLIC_INVENTORY_SUPABASE_ANON_KEY||'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzY2FxemhkeHF3cWd5bnd0cG9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzNzMyMzgsImV4cCI6MjEwNzk0OTIzOH0.SyYloKkNbomc0_QlHIVmI4Yr4pvKnheMEvS5C3ZRChs';
+export const url=process.env.NEXT_PUBLIC_INVENTORY_SUPABASE_URL||'https://unosqzlrigbwwnnpabar.supabase.co';
+export const key=process.env.NEXT_PUBLIC_INVENTORY_SUPABASE_ANON_KEY||'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVub3NxemxyaWdid3dubnBhYmFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3Njg2MzAsImV4cCI6MjExMDM0NDYzMH0.A8FdkweKIca0GYwL48DGpBZqbj9RcqcVHFVRvBL-_60';
 export const configured=Boolean(url&&key);
 export async function request<T=unknown>(path:string,token?:string,init:RequestInit={}){
  const response=await fetch(`${url}${path}`,{...init,headers:{apikey:key,Authorization:`Bearer ${token||key}`,'Content-Type':'application/json',...init.headers}});
