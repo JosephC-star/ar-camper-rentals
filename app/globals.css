@@ -112,3 +112,14 @@ footer{margin-top:35px;padding:35px max(6vw,28px);display:flex;justify-content:s
 .gear-invite strong{font:700 1.4rem Georgia,serif}.gear-invite p{margin:5px 0 0;font-size:.85rem;line-height:1.45}.gear-invite>span{display:inline-flex;align-items:center;gap:3px;flex:none;color:#234434;font-size:.8rem;font-weight:800}.gear-invite:hover>span{text-decoration:underline}.gear-invite:focus-visible{outline:3px solid #244b37;outline-offset:4px}
 .local-rental-details{display:flex;align-items:flex-start;flex-direction:column;gap:4px;margin:8px 0;text-align:left;color:#234434;font-size:.75rem}.local-rental-details>b{display:inline-block;border-radius:6px;background:#e7efde;padding:4px 7px;font-size:inherit}.local-rental-details>small{font-size:inherit}.dialog-content>.local-rental-details{margin:12px 28px 0}
 @media(max-width:600px){.gear-invite{margin-top:22px;padding:12px 15px;gap:5px;flex-direction:column;align-items:flex-start;transform:none}.gear-invite strong{font-size:1.05rem}.gear-invite p{font-size:.73rem}.gear-invite>span{font-size:.72rem}}
+
+/* Sparse decorative autumn leaves: homepage only, with no hit targets. */
+.autumn-leaves{position:fixed;inset:78px 0 0;z-index:4;overflow:hidden;pointer-events:none;contain:strict}
+.autumn-leaf-fall{position:absolute;top:-50px;color:var(--leaf-color);opacity:0;animation:autumn-fall var(--leaf-duration) linear var(--leaf-delay) infinite;pointer-events:none}
+.autumn-leaf-sway{display:block;width:100%;height:100%;animation:autumn-sway 6s ease-in-out infinite alternate;transform-origin:50% 20%}
+.autumn-leaf-fall:nth-child(even) .autumn-leaf-sway{animation-direction:alternate-reverse;animation-duration:8s}
+.autumn-leaves.is-paused *{animation-play-state:paused}
+@keyframes autumn-fall{0%{transform:translate3d(0,-40px,0);opacity:0}8%{opacity:.55}88%{opacity:.5}100%{transform:translate3d(36px,calc(100vh + 70px),0);opacity:0}}
+@keyframes autumn-sway{0%{transform:translateX(-14px) rotate(-35deg) rotateY(0)}100%{transform:translateX(14px) rotate(55deg) rotateY(65deg)}}
+@media(max-width:600px){.autumn-leaf-fall:nth-child(n+5){display:none}.autumn-leaves{opacity:.7}.autumn-leaf-fall{width:12px!important;height:12px!important}}
+@media(prefers-reduced-motion:reduce){.autumn-leaves{display:none}.autumn-leaf-fall,.autumn-leaf-sway{animation:none}}
