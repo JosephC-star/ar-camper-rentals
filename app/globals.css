@@ -123,3 +123,12 @@ footer{margin-top:35px;padding:35px max(6vw,28px);display:flex;justify-content:s
 @keyframes autumn-sway{0%{transform:translateX(-14px) rotate(-35deg) rotateY(0)}100%{transform:translateX(14px) rotate(55deg) rotateY(65deg)}}
 @media(max-width:600px){.autumn-leaf-fall:nth-child(n+5){display:none}.autumn-leaves{opacity:.7}.autumn-leaf-fall{width:12px!important;height:12px!important}}
 @media(prefers-reduced-motion:reduce){.autumn-leaves{display:none}.autumn-leaf-fall,.autumn-leaf-sway{animation:none}}
+
+/* Direct Messenger contact; shared public pages only, no embedded chat widget. */
+.arc-messenger-float{position:fixed;left:calc(20px + env(safe-area-inset-left,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:52px;min-height:52px;padding:12px 16px;border-radius:999px;background:#087bdc;color:#fff;box-shadow:0 5px 20px #092e4533;font-size:13px;font-weight:800}
+.arc-messenger-float[hidden]{display:none}
+.arc-messenger-float:hover{background:#0665b6}
+.arc-messenger-float:focus-visible,.footer-messenger:focus-visible,.contact-actions .facebook-link:focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+.footer-messenger,.contact-actions .facebook-link{display:inline-flex;align-items:center;gap:8px}
+.footer-messenger svg,.contact-actions .facebook-link svg{flex-shrink:0}
+@media(max-width:700px){.arc-messenger-float{left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:52px;height:52px;padding:0}.arc-messenger-float span{display:none}}
